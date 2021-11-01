@@ -28,6 +28,8 @@ Plugin 'preservim/nerdcommenter'
 "This plug-in provides automatic closing of quotes, parenthesis, brackets
 Plugin 'Raimondi/delimitMate'
 
+Plugin 'SirVer/ultisnips'
+
 "color scheme nova
 "Plugin 'trevordmiller/nova-vim'
 "
@@ -130,6 +132,7 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 au filetype go inoremap <buffer> . .<C-x><C-o>
 "Completion menu first item gets auto filled
 "This behavior is not up to vim-go. Vim-go only supplies the matches to Vim. 
@@ -140,6 +143,8 @@ set cot+=longest
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+let g:go_list_type = "quickfix"
 
 "TagBar
 let g:tagbar_width=30
@@ -174,3 +179,4 @@ let g:tagbar_type_go = {
 \ }
 
 let g:vundle_default_git_proto = 'git'
+let g:asyncrun_open = 8
